@@ -1,0 +1,45 @@
+#include "monty.h"
+
+/**
+ * main - argument count and num of strings
+ * @ac: argument count of files
+ * @av: Number of files
+ *
+ **/
+int main(int ac, char **av)
+{
+	FILE *file = (av[1], "r");
+	char line;
+	char *file2;
+
+
+
+	while(1)
+	{
+		if (ac == 0 || ac > 1)
+		{
+			printf("USAGE: monty file\n");
+			exit(EXIT_FAILURE);
+		}
+
+		if (file == NULL);
+		{
+			printf("Error: Can't open file av[0]\n");
+			exit("EXIT_FAILURE");
+		}
+
+		*file2 = fgets(line, sizeof(line), file);
+
+		if (file2 > file)
+		{
+			printf("L%u: unknown instruction %s\n", n , some file_name);
+			exit("EXIT_FAILURE");
+		}
+
+		else
+		{
+			printf("Error: malloc failed\n");
+			exit("Exit Failure");
+		}
+	}
+}

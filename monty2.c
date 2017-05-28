@@ -1,0 +1,53 @@
+#include "monty.h"
+
+/**
+ * main - argument count and num of strings
+ * @ac: argument count of files
+ * @av: Number of files
+ *
+ **/
+int main(int ac, char **av)
+{
+	FILE *file = fopen(av[1], "r");
+	unsigned int line_count = 0;
+	char *line = NULL;
+	size_t len = 0;
+	size_t nread;
+	char *token;
+
+
+	if (ac != 2)
+	{
+		printf("USAGE: monty %s file\n", av[0]);
+		exit(EXIT_FAILURE);
+	}
+
+	if (file == NULL)
+	{
+		printf("Error: Can't open file %s\n", av[0]);
+		exit(EXIT_FAILURE);
+	}
+
+	while(ac < 3)
+	{
+		line_count++;
+		nread = getline(&line, &len, file);
+		if (nread > 0)
+		{
+			token = strtok(line, "\n");
+			printf("%s\n", token);
+			token = strtok(NULL, "\n");
+			printf("%s\n", token);
+
+		}
+		while (nread > 0)
+		{
+			fclose(file);
+			free(line);
+			return (0);
+		}
+
+	}
+
+
+}
