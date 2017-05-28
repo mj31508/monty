@@ -33,7 +33,7 @@ int main(int ac, char **av)
 	while(nread)
 	 {
 		 printf("%s\n", token);
-		 break;
+		 
 		if (strcmp(token, "push") == 0)
 		{
 			token = strtok(NULL, "\n ");
