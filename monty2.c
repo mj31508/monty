@@ -12,8 +12,10 @@ int main(int ac, char **av)
 	unsigned int line_count = 0;
 	char *line = NULL;
 	size_t len = 0;
-	size_t nread;
+	ssize_t nread;
 	char *token;
+	char *saveptr;
+
 
 
 	if (ac != 2)
@@ -28,19 +30,18 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 
-	while(ac < 3)
+	nread = getline(&line, &len, file);
+	while(nread != -1)
 	{
-		line_count++;
-		nread = getline(&line, &len, file);
+
 		if (nread > 0)
 		{
-			token = strtok(line, "\n");
+			token = strtok_r(line, " ", &saveptr);
 			printf("%s\n", token);
-			token = strtok(NULL, "\n");
-			printf("%s\n", token);
+			line_count++;
 
 		}
-		while (nread > 0)
+		while (nread > -1)
 		{
 			fclose(file);
 			free(line);
